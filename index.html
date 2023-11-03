@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,15 +8,55 @@
 </head>
 <style>
 </style>
+
 <body>
     <!-- Title -->
     <h2 style="color: #444"><span style="color: #2B7ACD;">Hjjkkl1's </span>Documentations</h2>
     <hr>
     <h5>CNM, 肖铭言</h5>
     <h5>吊毛黄钊</h5>
-    
-    <h2>Bilibili Video</h2>
+
+    <!-- 外站 -->
+    <h2>Outside</h2>
+    <hr>
+    <div>
+        url <input id="url" type="text">
+        width <input id="iframe_w" type="text">
+        height <input id="iframe_h" type="text">
+        <button onclick="enter();">OK</button>
+    </div>
     <br>
-    <iframe src="//player.bilibili.com/player.html?aid=832992334&bvid=BV1vg4y1R7Cc&cid=1319162457&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+    <div id="iframe_container"></div>
+    <!-- <iframe id="iframe" src="https://www.liwenzhou.com/"></iframe> -->
 </body>
+<script>
+    window.onload = function () {
+    }
+
+    function enter() {
+        const inputs = getInputs();
+        createIframe(inputs.url, inputs.iframeW, inputs.iframeH);
+    }
+
+    function createIframe(src, w, h) {
+        const container = document.getElementById("iframe_container");
+        const elem = document.createElement("iframe");
+        elem.src = src;
+        elem.width = w;
+        elem.height = h;
+        container.appendChild(elem);
+    }
+
+    function getInputs() {
+        const url = document.getElementById("url").value;
+        const iframeW = document.getElementById("iframe_w").value;
+        const iframeH = document.getElementById("iframe_h").value;
+        return {
+            url,
+            iframeW: iframeW ? iframeW : 100,
+            iframeH: iframeH ? iframeH : 100,
+        };
+    }
+</script>
+
 </html>
